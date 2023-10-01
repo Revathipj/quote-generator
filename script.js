@@ -13,8 +13,11 @@ function loading() {
 }
 // Hide Loading
 function complete() {
-  quoteContainer.hidden = false;
-  loader.hidden = true;
+  if (!loader.hidden){
+    quoteContainer.hidden = false;
+    loader.hidden = true;
+  }
+  
 }
 
 // Show New Quote
@@ -72,8 +75,11 @@ async function getQuotes() {
     }
     quoteText.innerText = data.quoteText;
     // newQuote();
+    // Stop Loader, Show Quote
+    complete();
   } catch (error) {
     // Catch Error Here
+    getQuote();
     console.log('whoops, no quote', error);
   }
 }
