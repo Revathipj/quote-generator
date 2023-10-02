@@ -6,12 +6,12 @@ const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
 // let apiQuotes = [];
-// Show Loading
+// Loading Spinner Shown
 function loading() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
-// Hide Loading
+// Remove Loading Spinner
 function complete() {
   if (!loader.hidden){
     quoteContainer.hidden = false;
