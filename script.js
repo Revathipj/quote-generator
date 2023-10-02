@@ -6,13 +6,13 @@ const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
 // let apiQuotes = [];
-// Loading Spinner Shown
-function loading() {
+
+function showLoadingSpinner() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
-// Remove Loading Spinner
-function complete() {
+
+function removeLoadingSpinner() {
   if (!loader.hidden){
     quoteContainer.hidden = false;
     loader.hidden = true;
@@ -55,7 +55,7 @@ function complete() {
 
 // Get Quotes from API
 async function getQuotes() {
-  loading();
+  showLoadingSpinner();
   const apiUrl = "https://jacintodesign.github.io/quotes-api/data/quotes.json";
   try {
     const response = await fetch(apiUrl);
@@ -76,7 +76,7 @@ async function getQuotes() {
     quoteText.innerText = data.quoteText;
     // newQuote();
     // Stop Loader, Show Quote
-    complete();
+    removeLoadingSpinner();
   } catch (error) {
     // Catch Error Here
     getQuote();
